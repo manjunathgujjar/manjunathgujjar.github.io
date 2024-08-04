@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+html, body {
+    height: 100%;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+nav {
+    background: #E2E5E8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centers items vertically */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav .logo h1 {
+    margin: 0;
+color: black;
+text-decoration:none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    padding: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.main-content {
+    min-height: calc(100vh - 60px); /* Adjust based on the total height of the nav and footer */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-size: cover;
+    background-position: center;
+    flex-grow: 1; /* Takes up all available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 960px;
+}
+
+.header-content h2 {
+    font-size: 2.5rem;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.header-content #typed-text {
+    font-size: 2.5rem; /* Larger and bolder for the first sentence */
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.header-content #typed-text-sub {
+    font-size: 1.2rem; /* Smaller for the second sentence */
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+    font-size: 0.9em;
+}
+
+section {
+    padding: 20px;
+    background-color: #E2E5E8;
+    margin: 10px 0;
+    border-radius: 8px;
+    color: #333;
+    text-align:left;
+}
+
+section h2 {
+    color: #333;
+    text-align:center;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+li {
+    padding: 8px 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

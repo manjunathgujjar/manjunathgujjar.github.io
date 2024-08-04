@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Mohan Manjunath Gujjar's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+        .tab:hover, .active-tab {
+            background-color: #D5D7DB;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+		margin-top:20px;
+            background-color: #D5D7DB;
+            border-radius: 10px;
+        }
+        .header-content {
+            background-color: #E2E5E8;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1><a href="portfolio.html" style="text-decoration:none; color:black">Mohan Manjunath Gujjar's Portfolio</a></h1>
+        </div>
+        <ul>
+             <li><a href="education.html">Education</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+	<li><a href="https://www.linkedin.com/in/manjunathgujjar/">linkedin</a></li>
+        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=MohanManjunathGujjar@gmail.com
+">Email me</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <header style="background-image: url('cover_photo.jpg');">
+            <div class="header-content">
+                <section>
+                    <h2>Projects</h2>
+                    <div class="tabs" style="text-align: center ;">
+                        <div class="tab" onclick="openTab(event, 'AI')">AI</div>
+                        <div class="tab" onclick="openTab(event, 'ML')">Machine Learning</div>
+                        <div class="tab" onclick="openTab(event, 'DataAnalytics')">Data Analytics</div>
+                        <div class="tab" onclick="openTab(event, 'SoftwareDevelopment')">Software/Web Development</div>
+                    </div>
+                    <div id="AI" class="tab-content">
+                        <p><strong>Retrieval-Augmented Generation (RAG) Application Using Llama Index and OpenAI</strong> - Developed a robust RAG application leveraging the Llama Index and OpenAI, facilitating efficient querying and information retrieval from multiple PDF documents. Engineered a Python-based pipeline for loading, vectorizing, and indexing PDF content, enabling accurate and rapid retrieval based on user queries.</p>
+                        <p><strong>Automated Blog Post Generation Using AWS Lambda and Amazon Bedrock AI</strong> - Developed an automated content creation system using serverless architecture with AWS Lambda and Amazon Bedrock AI for generating 200-word blog posts based on user queries. Implemented API Gateway and AWS S3 for API management and data storage, ensuring seamless scalability and efficient data handling.</p>
+                    </div>
+                    <div id="ML" class="tab-content">
+                        <p><strong>Analyzing Heart Diseases with LIME, Research Project under Dr. Abhijith Dutt</strong> - Engineered a comprehensive methodology for heart disease detection using advanced machine learning models, achieving 95% accuracy with an innovative application of LIME for model predictions interpretation.</p>
+                        <p><strong>Picture Styling Using Deep Learning, Project under Dr. A Nagesh</strong> - Integrated an advanced Style Transfer model using PyTorch and VGG-19 to dynamically alter image styles, achieving a 90% style capture accuracy.</p>
+                    </div>
+                    <div id="DataAnalytics" class="tab-content">
+                        <p><strong>Google Trends Dashboard in Power BI</strong> - Designed and deployed a dynamic dashboard in Power BI utilizing Google Trends data to provide real-time insights into market trends and consumer behavior.</p>
+                        <p><strong>Loan Analysis Report using Tableau and SQL, Project under Dr. Rebecca Williams</strong> - Developed a comprehensive loan analysis report in Tableau, utilizing SQL to retrieve, validate, and manipulate data from a bank loan database. Created three interactive dashboards featuring filterable charts, KPIs, and navigation buttons.</p>
+                    </div>
+                    <div id="SoftwareDevelopment" class="tab-content">
+                        <p><strong>VogueVista</strong> - Designed and deployed a fashion e-commerce platform using React and the MERN stack, focusing on advanced filtering and responsive design for seamless browsing and shopping experiences.</p>
+                        <p><strong>Trip Nest</strong> - Developed a MERN stack accommodation booking app with mapped listings, enhancing UX with a responsive UI, state management via Redux, and organized codebase through MVC architecture.</p>
+                        <p><strong>Vulnerable E-tailer Site</strong> - Developed a secure e-commerce website on AWS utilizing EC2, RDS, Route 53, CloudFront, and WordPress, implementing MFA, firewall rules, SSL certificates from CloudFlare, and HTTPS rewrites to reduce security breaches by 50%.</p>
+                    </div>
+                </section>
+            </div>
+        </header>
+        <footer>
+            <p>© 2024 Mohan Manjunath Gujjar. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active-tab", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active-tab";
+        }
+        // Automatically open the first tab on initial load
+        document.getElementsByClassName("tab")[0].click();
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohan Manjunath Gujjar's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+    <div class="logo">
+        <h1>Mohan Manjunath Gujjar's Portfolio</h1>
+    </div>
+    <ul>
+      
+        <li><a href="education.html">Education</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
+	<li><a href="https://www.linkedin.com/in/manjunathgujjar/">linkedin</a></li>
+        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=MohanManjunathGujjar@gmail.com
+">Email me</a></li>
+
+    </ul>
+</nav>
+
+    <div class="main-content">
+       <header style="background-image: url('cover_photo.jpg');">
+    <div class="header-content">
+        <div id="typed-text"></div> <!-- For the first sentence -->
+        <div id="typed-text-sub"></div> <!-- For the second sentence -->
+    
+    </div>
+</header>
+
+
+	<footer>
+        <p>© 2024 Mohan Manjunath Gujjar. All rights reserved.</p>
+    </footer>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const typedTextSpan = document.querySelector("#typed-text");
+    const typedTextSpanSub = document.querySelector("#typed-text-sub");
+    const textArray = ["Empowering Tomorrow's Tech Landscape", "As a recent Computer Science Master's graduate, I'm ready to start a new chapter in my professional journey."];
+    const typingDelay = 50;
+    const newTextDelay = 50; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            if(textArrayIndex === 0) {
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            } else {
+                typedTextSpanSub.textContent += textArray[textArrayIndex].charAt(charIndex);
+            }
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            if (textArrayIndex < textArray.length - 1) {
+                textArrayIndex++;
+                charIndex = 0;
+                setTimeout(type, newTextDelay);
+            }
+        }
+    }
+
+    type(); // Start typing effect
+});
+</script>
+
+
+</body>
+</html>
