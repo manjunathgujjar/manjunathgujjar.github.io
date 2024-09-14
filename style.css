@@ -73,20 +73,28 @@ header {
     margin-bottom: 20px;
 }
 
+.header-content {
+    max-width: 960px; /* Increase this width if necessary */
+    width: 100%;
+    margin-left: auto;
+    padding-right: 5%; /* Adjust padding if it's causing wrapping */
+    padding-left: 5%; /* Ensure there's enough horizontal space */
+}
+
 .header-content #typed-text {
-    font-size: 2.5rem; /* Larger and bolder for the first sentence */
+    font-size: 2.5rem; /* You might adjust this size down if the text still wraps */
     color: #ffffff;
     font-weight: bold;
-    margin-bottom: 20px;
+    text-align: center; /* Align text centrally if that fits your design better */
+    white-space: nowrap; /* Prevents the text from wrapping */
 }
 
-.header-content #typed-text-sub {
-    font-size: 1.2rem; /* Smaller for the second sentence */
+.header-content #typed-text-sub1, .header-content #typed-text-sub2 {
+    font-size: 1.5rem;
     color: #ffffff;
-    margin-bottom: 20px;
+    text-align: center; /* This can be adjusted based on your design preference */
+    margin-bottom: 10px;
 }
-
-
 
 .btn {
     padding: 10px 20px;
