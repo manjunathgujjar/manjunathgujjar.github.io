@@ -3,70 +3,1725 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohan Manjunath Gujjar's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Mohan Gujjar - AI Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --text-tertiary: #6b7280;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-luxury: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+            --gradient-ai: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        nav {
+            position: absolute;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gradient-ai);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(40px);
+            z-index: 2000;
+            transition: right 0.4s ease;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 300;
+            margin: 1.5rem 0;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent-primary);
+            transform: translateX(10px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 0 4rem 0;
+            z-index: 1;
+            background: var(--bg-primary);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-ai);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+            z-index: 1;
+            background: var(--bg-primary);
+        }
+
+        .contact {
+            background: radial-gradient(ellipse at center bottom, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            padding: 6rem 0 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            background: var(--gradient-ai);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .about {
+            background: radial-gradient(ellipse at center top, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text h3 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .success-metric {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .certifications {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(20px);
+            margin-top: 2rem;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+        }
+
+        .certifications h4 {
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .cert-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:last-child {
+            border-bottom: none;
+        }
+
+        .cert-item:hover {
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateX(5px);
+        }
+
+        .cert-item::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .cert-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .cert-item a:hover {
+            color: var(--accent-primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-ai);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .skill-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .experience {
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border-subtle);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem 0 2rem 5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 2.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--gradient-ai);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--accent-primary);
+        }
+
+        .timeline-header {
+            margin-bottom: 1rem;
+        }
+
+        .timeline-company {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-role {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+
+        .timeline-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-achievements li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .project-image {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-luxury);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-neural {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+        }
+
+        .project-neural::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 75% 25%, rgba(59, 130, 246, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 25% 75%, rgba(59, 130, 246, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.4) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.4) 2px, transparent 2px);
+            background-size: 80px 80px;
+            animation: knowledgeGraph 4s ease-in-out infinite;
+        }
+
+        .project-neural::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            margin: -60px 0 0 -60px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            background: 
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 50%, transparent 50%),
+                linear-gradient(0deg, rgba(59, 130, 246, 0.1) 50%, transparent 50%);
+            background-size: 20px 20px;
+            animation: neuralPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes knowledgeGraph {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        @keyframes neuralPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.1) rotate(180deg); opacity: 0.8; }
+        }
+
+        .project-automation {
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #581c87 100%);
+        }
+
+        .project-automation::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            margin: -40px 0 0 -40px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: rgba(255, 255, 255, 0.8);
+            animation: itsmRotate 3s linear infinite;
+        }
+
+        .project-automation::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            margin: -60px 0 0 -60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.1) 45deg, transparent 90deg);
+            animation: itsmRotate 4s linear infinite reverse;
+        }
+
+        @keyframes itsmRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .project-analytics {
+            background: linear-gradient(135deg, #0f766e 0%, #0891b2 50%, #0284c7 100%);
+        }
+
+        .project-analytics::before {
+            content: '';
+            position: absolute;
+            inset: 20%;
+            background: 
+                repeating-linear-gradient(90deg, 
+                    rgba(255,255,255,0.1) 0px, 
+                    rgba(255,255,255,0.1) 1px, 
+                    transparent 1px, 
+                    transparent 15px),
+                repeating-linear-gradient(0deg, 
+                    rgba(255,255,255,0.1) 0px, 
+                    rgba(255,255,255,0.1) 1px, 
+                    transparent 1px, 
+                    transparent 15px);
+            animation: incidentPulse 2s ease-in-out infinite;
+        }
+
+        .project-analytics::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: radarSweep 3s ease-in-out infinite;
+        }
+
+        @keyframes incidentPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes radarSweep {
+            0% { 
+                transform: scale(0.8); 
+                opacity: 1; 
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+            }
+            100% { 
+                transform: scale(1.2); 
+                opacity: 0; 
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+            }
+        }
+
+        .project-explainable {
+            background: linear-gradient(135deg, #7c2d12 0%, #dc2626 50%, #f97316 100%);
+        }
+
+        .project-explainable::before {
+            content: '';
+            position: absolute;
+            inset: 30%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: brainPulse 3s ease-in-out infinite;
+        }
+
+        .project-explainable::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin: -50px 0 0 -50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            animation: brainScan 4s linear infinite;
+        }
+
+        @keyframes brainPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes brainScan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .project-erp {
+            background: linear-gradient(135deg, #6b21a8 0%, #9333ea 50%, #c084fc 100%);
+        }
+
+        .project-erp::before {
+            content: '';
+            position: absolute;
+            inset: 25%;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 25px 25px;
+            animation: erpGrid 3s ease-in-out infinite;
+        }
+
+        .project-erp::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            right: 30%;
+            bottom: 30%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: repeating-linear-gradient(45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px);
+            animation: erpFlow 4s ease-in-out infinite;
+        }
+
+        @keyframes erpGrid {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes erpFlow {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .project-rag {
+            background: linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%);
+        }
+
+        .project-rag::before {
+            content: '';
+            position: absolute;
+            bottom: 30%;
+            left: 10%;
+            right: 10%;
+            height: 40%;
+            background: repeating-linear-gradient(90deg,
+                rgba(255,255,255,0.1) 0px,
+                rgba(255,255,255,0.3) 2px,
+                rgba(255,255,255,0.1) 4px,
+                transparent 8px,
+                transparent 12px);
+            animation: ragWave 2s ease-in-out infinite;
+        }
+
+        .project-rag::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            margin-left: -40px;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.2) 30%, transparent 30%),
+                radial-gradient(circle at 50% 40%, rgba(255,255,255,0.1) 40%, transparent 40%);
+            background-size: 20px 20px, 40px 40px;
+            border-radius: 50%;
+            animation: ragProcess 3s ease-in-out infinite;
+        }
+
+        @keyframes ragWave {
+            0%, 100% { transform: translateY(0px); opacity: 0.6; }
+            50% { transform: translateY(-5px); opacity: 1; }
+        }
+
+        @keyframes ragProcess {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+            50% { transform: scale(1.1) rotate(180deg); opacity: 1; }
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-metrics {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            color: #10b981;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact {
+            background: radial-gradient(ellipse at center bottom, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+            flex-wrap: nowrap;
+        }
+
+        .contact-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            min-width: 0;
+            max-width: 280px;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .contact-item h4 {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .contact-item p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-primary);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 1rem 0;
+            text-align: center;
+            background: var(--bg-secondary);
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .footer-content {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .timeline-item {
+                padding-left: 0;
+            }
+            
+            .timeline-item::before {
+                display: none;
+            }
+
+            .contact-grid {
+                gap: 1rem;
+            }
+
+            .contact-item {
+                padding: 1.25rem;
+                max-width: 240px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 6rem 0 2rem 0;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+
+            .contact {
+                padding: 4rem 0 3rem 0;
+            }
+            
+            .section-header {
+                margin-bottom: 3rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .contact-item {
+                max-width: 200px;
+                min-width: 180px;
+                padding: 1rem;
+            }
+
+            .contact-item h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-item p {
+                font-size: 0.8rem;
+            }
+
+            .contact-item a {
+                font-size: 0.8rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+    </script>
 </head>
 <body>
-    <nav>
-        <div class="logo">
-            <h1>Mohan Manjunath Gujjar's Portfolio</h1>
-        </div>
-        <ul>
-            <li><a href="education.html">Education</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="https://www.linkedin.com/in/manjunathgujjar/">LinkedIn</a></li>
-            <li><a href="mailto:MohanManjunathGujjar@gmail.com">Email Me</a></li>
+    <canvas id="neural-canvas"></canvas>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="#experience" onclick="toggleMobileMenu()">Experience</a></li>
+            <li><a href="#projects" onclick="toggleMobileMenu()">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
         </ul>
-    </nav>
-
-    <div class="main-content">
-        <header style="background-image: url('cover_photo.jpg');">
-            <div class="header-content">
-                <div id="typed-text"></div> <!-- For the first sentence -->
-                <br> <!-- Line break for spacing -->
-                <div id="typed-text-sub1"></div> <!-- First part of the second sentence -->
-                <div id="typed-text-sub2"></div> <!-- Second part of the second sentence -->
-            </div>
-        </header>
-
-        <footer>
-            <p>© 2024 Mohan Manjunath Gujjar. All rights reserved.</p>
-        </footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const typedTextSpan = document.querySelector("#typed-text");
-            const typedTextSpanSub1 = document.querySelector("#typed-text-sub1");
-            const typedTextSpanSub2 = document.querySelector("#typed-text-sub2");
-            const textArray = ["Empowering Tomorrow's Tech Landscape", "As a recent Computer Science Master's graduate,", "I'm ready to start a new chapter in my professional journey."];
-            const typingDelay = 50;
-            const newTextDelay = 50; // Delay between current and next text
-            let textArrayIndex = 0;
-            let charIndex = 0;
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Mohan Gujjar</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+    </nav>
 
-            function type() {
-                if (charIndex < textArray[textArrayIndex].length) {
-                    if(textArrayIndex === 0) {
-                        typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                    } else if(textArrayIndex === 1) {
-                        typedTextSpanSub1.textContent += textArray[textArrayIndex].charAt(charIndex);
-                    } else {
-                        typedTextSpanSub2.textContent += textArray[textArrayIndex].charAt(charIndex);
-                    }
-                    charIndex++;
-                    setTimeout(type, typingDelay);
-                } else {
-                    if (textArrayIndex < textArray.length - 1) {
-                        textArrayIndex++;
-                        charIndex = 0;
-                        setTimeout(type, newTextDelay);
+    <main>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    Available for new opportunities
+                </div>
+                
+                <h1 class="hero-title">
+                    Building the Future<br>
+                    with Artificial Intelligence
+                </h1>
+                
+                <p class="hero-subtitle">
+                    AI-focused Software Engineer with MS in Computer Science, architecting enterprise-grade intelligent automation platforms 
+                    that serve thousands of operations daily with 99.9% reliability.
+                </p>
+
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About</h2>
+                <p class="section-subtitle">
+                    Specialized in enterprise AI solutions, from advanced RAG architectures to production-scale 
+                    multi-agent systems that transform business operations.
+                </p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>AI Engineer & Research Specialist</h3>
+                    <p>
+                        With a Master's in Computer Science and extensive experience at leading technology companies, 
+                        I architect intelligent systems that solve complex enterprise challenges. My work spans from 
+                        autonomous ITSM workflows to sophisticated RAG-based evaluation systems.
+                    </p>
+                    <p>
+                        Currently at <span class="highlight">Kochasoft Inc</span>, I lead the development of 
+                        cognitive automation platforms that have reduced manual processing by 
+                        <span class="success-metric">65%</span> while maintaining 
+                        <span class="success-metric">99.9% system uptime</span> across enterprise deployments.
+                    </p>
+                    <p>
+                        My approach combines cutting-edge AI research with practical engineering excellence, 
+                        ensuring solutions are not just innovative but also scalable and production-ready.
+                    </p>
+                    
+                    <div class="certifications">
+                        <h4>Professional Certifications</h4>
+                        <div class="cert-grid">
+                            <div class="cert-item"><a href="https://learn.microsoft.com/en-us/users/manjunathgujjar-0821/credentials/7d88aada73be0a00" target="_blank">Microsoft Azure AI Engineer </a></div>
+                            <div class="cert-item"><a href="https://learn.microsoft.com/en-us/users/mohanmanjunathgujjar-5503/credentials/5a07f9ea6966ddfa" target="_blank">Microsoft Azure Fundamentals</a></div>
+                            <div class="cert-item"><a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/bac0704301c24aaea028b61d20eb903c" target="_blank">AWS Solutions Architect</a></div>
+                            <div class="cert-item"><a href="https://drive.google.com/file/d/1i-yVJNU5zDGl2iXiQcCCo5sit77AZ-2K/view?usp=sharing" target="_blank">Infosys Certified Software Programmer</a></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-title">AI & Machine Learning</div>
+                        <div class="skill-description">
+                            Advanced RAG architectures, LLM integration, multi-agent systems, OpenAI API, 
+                            Ollama, Llama Index, TensorFlow, PyTorch
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-title">Cloud Architecture</div>
+                        <div class="skill-description">
+                            AWS, Azure AI Foundry, Docker, Kubernetes, Terraform, CI/CD pipelines, 
+                            microservices architecture
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-title">Backend Engineering</div>
+                        <div class="skill-description">
+                            FastAPI, Express.js, Spring Boot, RESTful APIs, GraphQL, PostgreSQL, 
+                            MongoDB, Redis
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-title">Data Engineering</div>
+                        <div class="skill-description">
+                            ETL optimization, data pipeline design, Apache Kafka, real-time analytics, 
+                            multi-TB dataset processing
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">
+                    Track record of delivering enterprise AI solutions that scale from proof-of-concept 
+                    to production systems serving thousands of users daily.
+                </p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-company">Kochasoft Inc</div>
+                        <div class="timeline-role">Software Engineer</div>
+                        <div class="timeline-date">July 2025 - Present</div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Leading development of autonomous AI systems for enterprise IT service management and incident resolution.</p>
+                        <ul class="timeline-achievements">
+                            <li>Architected intelligent ServiceNow MCP Server enabling cognitive ITSM workflows, reducing manual processing time by <span class="success-metric">65%</span></li>
+                            <li>Built autonomous incident resolution system using Azure AI Foundry and multi-agent architecture with <span class="success-metric">80% reduction in human intervention</span></li>
+                            <li>Engineered enterprise-grade RAG-based ticket evaluation system processing <span class="success-metric">10,000+ tickets daily</span> with 95% accuracy improvement</li>
+                            <li>Developed comprehensive analytics dashboards reducing reporting overhead by <span class="success-metric">70%</span> for 20+ operations teams</li>
+                            <li>Implemented scalable AI infrastructure achieving <span class="success-metric">99.9% system uptime</span> with zero-downtime deployments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-company">Protechs Global</div>
+                        <div class="timeline-role">Software Engineer</div>
+                        <div class="timeline-date">July 2024 - March 2025</div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Developed scalable enterprise microservices with advanced security and cloud-native architecture.</p>
+                        <ul class="timeline-achievements">
+                            <li>Built Python microservices with Azure Entra ID integration, boosting application performance by <span class="success-metric">30%</span></li>
+                            <li>Designed secure RESTful APIs using Azure Functions and Key Vault, improving response times by <span class="success-metric">25%</span></li>
+                            <li>Integrated automated CI/CD workflows with Terraform and GitHub Actions, streamlining deployment cycles by <span class="success-metric">50%</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-company">University of Maryland</div>
+                        <div class="timeline-role">Teaching Assistant - Data Science</div>
+                        <div class="timeline-date">August 2023 - May 2024</div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Mentored students in advanced AI and machine learning concepts while optimizing large-scale data processing systems.</p>
+                        <ul class="timeline-achievements">
+                            <li>Mentored <span class="success-metric">100+ students</span> in Python, ML deployment, and RAG system implementation</li>
+                            <li>Led 5+ workshops on ML model integration and LLM fine-tuning for <span class="success-metric">300+ students</span></li>
+                            <li>Optimized ETL workflows improving efficiency by <span class="success-metric">20%</span> for multi-TB datasets</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-company">State Street Corporation</div>
+                        <div class="timeline-role">Software Engineer (Wiley Edge)</div>
+                        <div class="timeline-date">January 2022 - July 2022</div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Optimized financial data systems and developed automation solutions for high-volume trading operations.</p>
+                        <ul class="timeline-achievements">
+                            <li>Optimized SQL queries for high-volume financial data retrieval systems</li>
+                            <li>Designed Python automation scripts reducing manual intervention by <span class="success-metric">20%</span></li>
+                            <li>Built data visualization dashboards increasing accessibility by <span class="success-metric">30%</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-company">Ezerka Technology Solutions</div>
+                        <div class="timeline-role">Software Engineer</div>
+                        <div class="timeline-date">January 2021 - December 2021</div>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Developed comprehensive ERP systems and real-time data synchronization solutions for enterprise clients.</p>
+                        <ul class="timeline-achievements">
+                            <li>Engineered comprehensive ERP system using Node.js, Express.js, and MongoDB, supporting <span class="success-metric">1000+ concurrent users</span></li>
+                            <li>Implemented Apache Kafka event-driven architecture for seamless data synchronization, improving system throughput by <span class="success-metric">40%</span></li>
+                            <li>Built responsive frontend interfaces and Power BI analytics dashboards providing real-time business insights to <span class="success-metric">5+ departments</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">
+                    Enterprise-grade AI solutions that demonstrate mastery of modern machine learning 
+                    and autonomous system architectures.
+                </p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image project-neural"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Driven Knowledge Graph & RAG Platform</h3>
+                        <p class="project-description">
+                            Engineered a sophisticated AI platform that ingests multimodal documents and recursive web content, 
+                            extracting semantic relationships into a Neo4j knowledge graph with hybrid retrieval capabilities 
+                            for context-rich question answering.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">✓ Multimodal embeddings with graph + vector search</div>
+                            <div class="metric">✓ Depth-5 recursive link processing</div>
+                            <div class="metric">✓ Context-rich Q&A with citation tracking</div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Neo4j</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">Ollama</span>
+                            <span class="tag">DeepSeek</span>
+                            <span class="tag">Vector DB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image project-automation"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Autonomous ITSM Workflow Engine</h3>
+                        <p class="project-description">
+                            Architected an intelligent ServiceNow MCP Server with cognitive ITSM capabilities, 
+                            featuring AI chat interfaces and autonomous decision-making that revolutionized 
+                            enterprise service management operations.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">✓ 65% reduction in manual processing time</div>
+                            <div class="metric">✓ 10,000+ daily operations automated</div>
+                            <div class="metric">✓ 99.9% system uptime achieved</div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">ServiceNow</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">MCP SDK</span>
+                            <span class="tag">Microservices</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image project-analytics"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Multi-Agent Incident Resolution System</h3>
+                        <p class="project-description">
+                            Developed an autonomous incident resolution platform using Azure AI Foundry and 
+                            multi-agent architecture, processing Dynatrace webhooks through Kafka streams 
+                            for intelligent infrastructure issue diagnosis and resolution.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">✓ 80% reduction in human intervention</div>
+                            <div class="metric">✓ Real-time webhook processing at scale</div>
+                            <div class="metric">✓ Automated diagnosis and resolution</div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Azure AI</span>
+                            <span class="tag">Kafka</span>
+                            <span class="tag">Multi-Agent</span>
+                            <span class="tag">Dynatrace</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image project-rag"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Enterprise RAG Evaluation Engine</h3>
+                        <p class="project-description">
+                            Built an enterprise-grade RAG-based ticket evaluation system using FastAPI and PostgreSQL, 
+                            implementing advanced retrieval techniques for processing thousands of support tickets 
+                            with intelligent priority classification.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">✓ 10,000+ tickets processed daily</div>
+                            <div class="metric">✓ 95% accuracy improvement in classification</div>
+                            <div class="metric">✓ 45% faster resolution times</div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">Enterprise</span>
+                            <span class="tag">ML Pipeline</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image project-explainable"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Explainable AI Research Platform</h3>
+                        <p class="project-description">
+                            Implemented advanced ML explainability techniques using LIME for predictive model 
+                            interpretation in healthcare applications, achieving high accuracy in cardiovascular 
+                            disease detection with comprehensive clinical insights.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">✓ 92% accuracy in diagnostic predictions</div>
+                            <div class="metric">✓ LIME-based model interpretation</div>
+                            <div class="metric">✓ Statistical validation and analysis</div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">LIME</span>
+                            <span class="tag">Healthcare AI</span>
+                            <span class="tag">Explainability</span>
+                            <span class="tag">Research</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image project-erp"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Scalable ERP Platform</h3>
+                        <p class="project-description">
+                            Engineered a comprehensive ERP system using modern cloud-native technologies, 
+                            supporting over 1000 concurrent users with Apache Kafka event-driven architecture 
+                            for real-time business intelligence and operations.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">✓ 1000+ concurrent users supported</div>
+                            <div class="metric">✓ 40% improvement in system throughput</div>
+                            <div class="metric">✓ Real-time business intelligence</div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Apache Kafka</span>
+                            <span class="tag">Microservices</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Let's discuss how we can work together to build innovative AI solutions.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:manjunathgujjar.147@gmail.com">manjunathgujjar.147@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>GitHub</h4>
+                        <p><a href="https://github.com/manjunathgujjar" target="_blank">github.com/manjunathgujjar</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/manjunathgujjar/" target="_blank">linkedin.com/in/manjunathgujjar</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Location</h4>
+                        <p>DMV, Virginia<br><small>Open to relocation</small></p>
+                    </div>
+                </div>
+
+                <div class="cta-buttons" style="margin-top: 3rem;">
+                    <a href="mailto:manjunathgujjar.147@gmail.com" class="btn btn-primary">Start a Conversation</a>
+                    <a href="https://drive.google.com/file/d/1LtHnxgS2UD4ch_9xOrBXobbgE7jSxIO5/view?usp=sharing" class="btn btn-secondary" target="_blank">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-content">© 2025 Mohan Gujjar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let scene, camera, renderer, points, particles;
+        const nodeCount = 150;
+        const connections = [];
+
+        function initNeuralNetwork() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ 
+                canvas: document.getElementById('neural-canvas'),
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(nodeCount * 3);
+            const colors = new Float32Array(nodeCount * 3);
+
+            for (let i = 0; i < nodeCount; i++) {
+                const i3 = i * 3;
+                positions[i3] = (Math.random() - 0.5) * 1000;
+                positions[i3 + 1] = (Math.random() - 0.5) * 1000;
+                positions[i3 + 2] = (Math.random() - 0.5) * 1000;
+
+                const intensity = Math.random() * 0.5 + 0.5;
+                colors[i3] = 0.2 * intensity;
+                colors[i3 + 1] = 0.5 * intensity;
+                colors[i3 + 2] = 1.0 * intensity;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 3,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+
+            points = new THREE.Points(geometry, material);
+            scene.add(points);
+
+            createConnections();
+            camera.position.z = 500;
+            animateNeuralNetwork();
+        }
+
+        function createConnections() {
+            const positions = points.geometry.attributes.position.array;
+            
+            for (let i = 0; i < nodeCount; i++) {
+                const i3 = i * 3;
+                const x1 = positions[i3];
+                const y1 = positions[i3 + 1];
+                const z1 = positions[i3 + 2];
+
+                for (let j = i + 1; j < nodeCount; j++) {
+                    const j3 = j * 3;
+                    const x2 = positions[j3];
+                    const y2 = positions[j3 + 1];
+                    const z2 = positions[j3 + 2];
+
+                    const distance = Math.sqrt(
+                        Math.pow(x2 - x1, 2) + 
+                        Math.pow(y2 - y1, 2) + 
+                        Math.pow(z2 - z1, 2)
+                    );
+
+                    if (distance < 200 && Math.random() < 0.1) {
+                        const geometry = new THREE.BufferGeometry();
+                        const linePositions = new Float32Array([x1, y1, z1, x2, y2, z2]);
+                        geometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+                        const material = new THREE.LineBasicMaterial({
+                            color: 0x3b82f6,
+                            transparent: true,
+                            opacity: 0.2,
+                            blending: THREE.AdditiveBlending
+                        });
+
+                        const line = new THREE.Line(geometry, material);
+                        scene.add(line);
+                        connections.push(line);
                     }
                 }
             }
-            type(); // Start typing effect
+        }
+
+        function animateNeuralNetwork() {
+            requestAnimationFrame(animateNeuralNetwork);
+
+            const time = Date.now() * 0.0005;
+            
+            if (points) {
+                points.rotation.x = time * 0.1;
+                points.rotation.y = time * 0.2;
+            }
+
+            connections.forEach((connection, index) => {
+                connection.material.opacity = 0.1 + Math.sin(time + index * 0.1) * 0.1;
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        if (window.innerWidth > 768) {
+            initNeuralNetwork();
+        }
+
+        window.addEventListener('resize', () => {
+            if (renderer && camera) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+                nav.style.borderBottomColor = 'rgba(255, 255, 255, 0.2)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.8)';
+                nav.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        document.getElementById('downloadResume').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('To implement resume download:\n\n1. Upload your resume PDF to your website folder\n2. Replace the href with the PDF path\n3. Or link to Google Drive/Dropbox\n\nExample: href="./resume.pdf"');
         });
     </script>
 </body>
