@@ -148,24 +148,6 @@ export function Features() {
             </motion.div>
           ))}
 
-          {/* Tech stack — full width */}
-          <motion.div
-            variants={cardVariants}
-            className="md:col-span-3 bg-[#1a1a1a] rounded-2xl px-7 py-6 flex flex-col gap-5"
-          >
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-gray-500 text-[10px] tracking-widest uppercase shrink-0 w-24">Languages</span>
-              {["Python", "TypeScript", "JavaScript", "Java", "SQL", "PyTorch", "TensorFlow", "Scikit-learn"].map((t) => (
-                <span key={t} className="bg-white/5 border border-white/8 text-[#E1E0CC] text-xs px-3 py-1.5 rounded-full">{t}</span>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-gray-500 text-[10px] tracking-widest uppercase shrink-0 w-24">Frameworks</span>
-              {["FastAPI", "React", "Node.js", "LangGraph", "LangChain", "LlamaIndex", "Docker", "Kubernetes", "Kafka", "Redis", "PostgreSQL", "Neo4j", "Terraform", "GitHub Actions"].map((t) => (
-                <span key={t} className="bg-white/5 border border-white/8 text-[#E1E0CC] text-xs px-3 py-1.5 rounded-full">{t}</span>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

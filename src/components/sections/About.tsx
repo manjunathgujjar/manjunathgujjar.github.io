@@ -17,14 +17,14 @@ export function About() {
 
   return (
     <section id="about" className="bg-black py-24 px-4 sm:px-6 flex justify-center items-center">
-      <div className="bg-[#101010] p-8 md:p-16 lg:p-24 rounded-3xl text-center max-w-6xl w-full">
-        
+      <div className="bg-[#101010] p-8 md:p-16 lg:p-24 rounded-3xl text-left max-w-6xl w-full">
+
         <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-8">
           Agentic AI · Production Systems · LLM Evaluation
         </p>
 
         <WordsPullUpMultiStyle
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-3xl mx-auto leading-[0.95] sm:leading-[0.9] text-[#E1E0CC] mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-3xl leading-[0.95] sm:leading-[0.9] text-[#E1E0CC] mb-16"
           segments={[
             { text: "I build AI systems that work in production. ", className: "font-normal" },
             { text: "multi-agent platforms, RAG pipelines, ", className: "font-normal" },
@@ -32,7 +32,7 @@ export function About() {
           ]}
         />
 
-        <div ref={containerRef} className="max-w-2xl mx-auto">
+        <div ref={containerRef} className="max-w-2xl">
           <p className="text-[#DEDBC8] text-xs sm:text-sm md:text-base leading-relaxed text-balance">
             {paragraphText.split("").map((char, index) => {
               const charProgress = index / totalChars;

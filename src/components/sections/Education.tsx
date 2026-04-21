@@ -39,9 +39,9 @@ const certifications = [
 ];
 
 const achievements = [
-  { title: "Smart India Hackathon", detail: "7th place out of 500+ teams — alumni tracking platform." },
-  { title: "CTF at UMBC", detail: "Ranked Top 10 in university-wide Capture the Flag competition." },
-  { title: "Cognizant Coding Contest", detail: "Ranked 1,432 out of 200,000+ participants." },
+  { stat: "7th / 500+", title: "Smart India Hackathon", detail: "teams · alumni tracking platform" },
+  { stat: "Top 10", title: "CTF at UMBC", detail: "university-wide Capture the Flag" },
+  { stat: "1,432 / 200K+", title: "Cognizant Coding Contest", detail: "global participants" },
 ];
 
 export function Education() {
@@ -136,8 +136,9 @@ export function Education() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {achievements.map((ach, idx) => (
               <div key={idx}>
-                <p className="text-[#E1E0CC] text-sm font-medium mb-1">{ach.title}</p>
-                <p className="text-primary/55 text-sm leading-relaxed">{ach.detail}</p>
+                <p className="text-[#E1E0CC] text-3xl font-medium tracking-tight leading-none mb-1">{ach.stat}</p>
+                <p className="text-[#E1E0CC] text-sm font-medium mt-2 mb-0.5">{ach.title}</p>
+                <p className="text-primary/45 text-xs leading-relaxed">{ach.detail}</p>
               </div>
             ))}
           </div>

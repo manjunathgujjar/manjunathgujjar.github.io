@@ -6,13 +6,10 @@ const experiences = [
     company: "Kochasoft Inc",
     role: "AI Engineer",
     bullets: [
-      "Architected a cloud-native multi-agent orchestration platform on Azure AI Foundry, deployed on-premises, using a planner/supervisor topology with structured tool execution as the backbone of enterprise IT operations automation.",
-      "Built an MCP-based tool integration layer where agents invoke enterprise systems (ticketing, CMDB, monitoring alerts) via governed APIs enforcing OAuth2, RBAC, and full audit trails.",
-      "Designed human-in-the-loop workflows with confidence-based routing, tiered approval gates, and override mechanisms, enabling compliant AI automation without sacrificing operator control.",
-      "Developed RAG-grounded decision pipelines (retrieval → context assembly → Redis caching) that reduced hallucination rates and improved response accuracy and latency across production agent workflows.",
-      "Owned the full observability and state stack: Langfuse per-agent traces, Prometheus/Grafana latency and failure metrics, Ragas CI evaluation gate for grounding quality, Redis for HITL pause/resume state, Qdrant Cloud for vector storage, and PostgreSQL for evaluation history, with SxS testing and drift detection across all production agents.",
-      "Applied responsible AI principles throughout: confidence-based routing with operator override controls, red-team coverage for adversarial inputs, audit trails on all automated decisions, and output guardrails enforced at the agent boundary.",
-      "Collaborated with frontend and product teams to define API contracts and ship React/TypeScript dashboards for agent operations monitoring.",
+      "Architected a cloud-native multi-agent orchestration platform on Azure AI Foundry, deployed on-premises, using a planner/supervisor topology with MCP-governed tool calls into enterprise systems (CMDB, ticketing, monitoring) enforcing OAuth2, RBAC, and full audit trails.",
+      "Designed human-in-the-loop workflows with confidence-based routing and tiered approval gates; built RAG-grounded decision pipelines with Redis semantic caching to improve accuracy and reduce latency across production agent workflows.",
+      "Owned the full observability stack: Langfuse per-agent traces, Prometheus/Grafana metrics, Ragas CI evaluation gate, Redis HITL state, Qdrant Cloud vectors, and PostgreSQL eval history — with SxS testing and drift detection across all agents.",
+      "Applied responsible AI throughout: red-team coverage for adversarial inputs, output guardrails at the agent boundary, and operator override controls on every automated decision.",
     ],
   },
   {
