@@ -14,7 +14,7 @@ export function Contact() {
         />
 
         <p className="text-primary/45 text-sm mb-12 max-w-sm">
-          Staff or senior AI engineer · multi-agent systems · production RAG · LLM evaluation
+          Multi-agent systems · production RAG · LLM evaluation
         </p>
 
         {/* Primary CTA */}

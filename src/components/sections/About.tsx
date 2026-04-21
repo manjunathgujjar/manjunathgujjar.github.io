@@ -24,7 +24,7 @@ export function About() {
         </p>
 
         <WordsPullUpMultiStyle
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-3xl leading-[0.95] sm:leading-[0.9] text-[#E1E0CC] mb-16"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-3xl justify-start leading-snug text-[#E1E0CC] mb-12"
           segments={[
             { text: "I build AI systems that work in production. ", className: "font-normal" },
             { text: "multi-agent platforms, RAG pipelines, ", className: "font-normal" },
