@@ -3,25 +3,39 @@ import { motion } from "framer-motion";
 const education = [
   {
     type: "Master's Degree",
-    school: "University of Maryland",
+    school: "UMBC",
     degree: "MS in Computer Science (STEM)",
+    gpa: "GPA 3.4",
     desc: "Data Structures & Algorithms, Machine Learning, Cybersecurity, Active Cyber Defense.",
   },
   {
     type: "Bachelor's Degree",
     school: "Jawaharlal Nehru Technological University",
     degree: "BS in Computer Science",
+    gpa: "GPA 3.7",
     desc: "Core fundamentals of operating systems, databases, algorithms, and software engineering.",
   },
 ];
 
 const certifications = [
-  { name: "Microsoft Azure AI Engineer", issuer: "Microsoft" },
-  { name: "Microsoft Azure Fundamentals", issuer: "Microsoft" },
-  { name: "AWS Solutions Architect", issuer: "Amazon Web Services" },
-  { name: "Infosys Certified Software Programmer", issuer: "Infosys" },
-  { name: "Agentforce Trailblazer", issuer: "Salesforce" },
-  { name: "Claude Code in Action", issuer: "Anthropic" },
+  {
+    name: "Microsoft Azure AI Engineer",
+    issuer: "Microsoft",
+    link: "https://learn.microsoft.com/en-us/users/manjunathgujjar-0821/credentials/7d88aada73be0a00",
+  },
+  {
+    name: "Microsoft Azure Fundamentals",
+    issuer: "Microsoft",
+    link: "https://learn.microsoft.com/en-us/users/mohanmanjunathgujjar-5503/credentials/5a07f9ea6966ddfa",
+  },
+  {
+    name: "AWS Solutions Architect",
+    issuer: "Amazon Web Services",
+    link: "https://cp.certmetrics.com/amazon/en/public/verify/credential/bac0704301c24aaea028b61d20eb903c",
+  },
+  { name: "Infosys Certified Software Programmer", issuer: "Infosys", link: "https://drive.google.com/file/d/1i-yVJNU5zDGl2iXiQcCCo5sit77AZ-2K/view" },
+  { name: "Agentforce Innovator", issuer: "Salesforce", link: "https://www.salesforce.com/trailblazer/mgujjar3" },
+  { name: "Claude Code in Action", issuer: "Anthropic", link: "https://verify.skilljar.com/c/vbvkfeqdahfg" },
 ];
 
 const achievements = [
@@ -57,9 +71,14 @@ export function Education() {
                 <span className="text-primary/50 text-xs tracking-widest uppercase mb-2 block">
                   {edu.type}
                 </span>
-                <h3 className="text-[#E1E0CC] text-xl font-medium mb-1">
-                  {edu.school}
-                </h3>
+                <div className="flex items-center gap-3 mb-1">
+                  <h3 className="text-[#E1E0CC] text-xl font-medium">
+                    {edu.school}
+                  </h3>
+                  <span className="text-primary/50 text-xs border border-white/10 rounded-full px-2 py-0.5">
+                    {edu.gpa}
+                  </span>
+                </div>
                 <p className="text-primary/80 font-serif italic text-base mb-3">
                   {edu.degree}
                 </p>
@@ -84,7 +103,19 @@ export function Education() {
                 <div key={idx} className="flex items-start gap-3 pb-4 border-b border-white/5 last:border-none last:pb-0">
                   <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0" />
                   <div>
-                    <p className="text-[#E1E0CC] text-sm font-medium">{cert.name}</p>
+                    {cert.link ? (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#E1E0CC] text-sm font-medium hover:text-primary transition-colors inline-flex items-center gap-1"
+                      >
+                        {cert.name}
+                        <span className="text-primary/40 text-xs">↗</span>
+                      </a>
+                    ) : (
+                      <p className="text-[#E1E0CC] text-sm font-medium">{cert.name}</p>
+                    )}
                     <p className="text-primary/45 text-xs mt-0.5">{cert.issuer}</p>
                   </div>
                 </div>

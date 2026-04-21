@@ -7,12 +7,13 @@ export function Hero() {
     <section className="h-screen w-full relative p-4 md:p-6 bg-black">
       <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden bg-[#0a0a0a]">
         
-        {/* Background Video */}
+        {/* Background Video - loaded lazily to avoid blocking */}
         <video
           autoPlay
           loop
           muted
           playsInline
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
         />
@@ -45,7 +46,7 @@ export function Hero() {
                 transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-white font-medium text-xs sm:text-sm md:text-base leading-[1.2] max-w-sm text-left md:text-right mb-6"
               >
-                AI Engineer specializing in agentic systems, multi-agent orchestration, and production RAG architectures. Building governed LLM platforms that unlock potential through measurable business impact.
+                AI Engineer with 5 years of engineering experience and 2+ years in production agentic systems: multi-agent orchestration, RAG pipelines, and LLM evaluation at enterprise scale.
               </motion.p>
               
               <motion.a

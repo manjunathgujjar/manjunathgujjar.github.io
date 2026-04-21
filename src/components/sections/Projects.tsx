@@ -5,25 +5,75 @@ import { WordsPullUpMultiStyle } from "../ui/WordsPullUpMultiStyle";
 const projects = [
   {
     index: "01",
-    title: "AI-Driven Knowledge Graph & RAG Platform",
-    type: "Full-Stack Application",
-    tags: ["Neo4j", "RAG", "GraphRAG", "Ollama", "DeepSeek", "Multimodal Embeddings", "Hybrid Retrieval"],
+    title: "LLM Security Sentinel",
+    type: "Agentic AI Security Platform",
+    tags: ["FastAPI", "LangGraph", "Next.js", "OWASP LLM Top 10", "SSE", "PostgreSQL", "Prometheus", "Langfuse", "OpenAI", "Gemini"],
     bullets: [
-      "Built an AI-powered platform that ingests documents, images, and recursive links (depth-5), extracting concepts and relationships into a Neo4j knowledge graph for semantic retrieval.",
-      "Implemented RAG with multimodal embeddings and hybrid retrieval (graph + vector search), enabling data flow tracing using LLM backends (Ollama, DeepSeek) to deliver accurate, context-rich Q&A with citations.",
+      "Architected a production-grade LLM red-team platform orchestrating 6 OWASP LLM Top 10 attack agents (Prompt Injection, Insecure Output Handling, Model DoS, Sensitive Disclosure, Plugin Abuse, Excessive Agency) with a human-in-the-loop approval gate and real-time SSE event streaming to a Next.js live dashboard.",
+      "Engineered a universal format-detection adapter supporting 8 endpoint schemas (JSON variants, OpenAI-compatible, form-encoded) with multi-LLM provider switching (OpenAI, Gemini Flash), enabling black-box security testing of any LLM endpoint; validated live against a real internet target.",
     ],
-    highlight: "Graph + Vector hybrid retrieval with citation tracing.",
+    highlight: "6-agent OWASP LLM Top 10 red-team platform with live SSE dashboard.",
+    link: "https://github.com/manjunathgujjar",
   },
   {
     index: "02",
-    title: "Explainable AI Platform",
-    type: "Research Project",
-    tags: ["LIME", "TensorFlow", "PyTorch", "Keras", "Spark ML", "Anomaly Detection", "Healthcare AI"],
+    title: "ARIA – Autonomous Research & Intelligence Agents",
+    type: "Multi-Agent RAG Platform",
+    tags: ["LangGraph", "FastAPI", "BM25", "Qdrant", "Redis", "Ragas", "WebSocket", "Railway", "Vercel", "Langfuse"],
     bullets: [
-      "Implemented Spark ML explainability techniques using LIME for predictive model interpretation in healthcare applications, achieving 92% accuracy in diagnostic predictions.",
-      "Leveraged TensorFlow, PyTorch, and Keras with anomaly detection techniques to support statistical analysis and model evaluation ensuring reliable classification for clinical insights.",
+      "Built a publicly deployed multi-agent research platform coordinating 5 specialized agents (Planner, Retriever, Search, Verifier, Critic) with a human-in-the-loop approval gate, real-time WebSocket activity stream, and CI-gated Ragas evaluation pipeline achieving faithfulness > 0.91 on a 50-question golden dataset.",
+      "Implemented production-grade hybrid retrieval (BM25 + Qdrant vector search) with cross-encoder reranking, citation enforcement, and a semantic Redis cache achieving sub-10ms hit latency; Langfuse tracing covers every retrieval score, prompt, and token across all agents.",
     ],
-    highlight: "92% diagnostic accuracy with LIME-based model explainability.",
+    highlight: "Faithfulness > 0.91 · sub-10ms Redis cache · CI-gated Ragas eval pipeline.",
+    link: "https://github.com/manjunathgujjar",
+  },
+  {
+    index: "03",
+    title: "Agentic ITSM Ticket Quality Evaluator",
+    type: "Enterprise AI Automation",
+    tags: ["FastAPI", "LangGraph", "Ollama", "LoRA", "PostgreSQL", "Redis", "Docker", "Kubernetes", "Jira", "ServiceNow", "Multi-tenant"],
+    bullets: [
+      "Designed and productionized an LLM-powered ITSM ticket quality evaluator scoring completeness, accuracy, and actionability using hierarchical scoring logic with explainable verdicts; fine-tuned a Llama 3 model via Ollama with LoRA on domain-specific ticket data to improve classification accuracy and reduce general-purpose LLM inference cost.",
+      "Built a modular multi-tenant backend (FastAPI, PostgreSQL, Redis vector search, Docker/Kubernetes) with evaluation criteria co-designed through PM, SRE, and Customer Success workshops; improved review throughput by 70% and reduced assessment variability by 55%.",
+    ],
+    highlight: "70% throughput · 55% less variability · LoRA fine-tuned Ollama classifier.",
+    link: "https://github.com/manjunathgujjar",
+  },
+  {
+    index: "04",
+    title: "Agentic Incident Triage Automation",
+    type: "Cloud-Native Agentic Platform",
+    tags: ["Azure AI Foundry", "LangGraph", "FastAPI", "MCP", "ServiceNow", "CMDB", "Redis", "Multi-Agent", "On-Premises", "OAuth2"],
+    bullets: [
+      "Built a cloud-native incident triage platform on Azure AI Foundry, deployed on-premises, where a pipeline of specialized agents (Detector, Classifier, Router, Resolver) processes incoming alerts, correlates against CMDB topology, and auto-resolves known incident patterns with full audit trails and operator override support.",
+      "Agents invoke enterprise tools via MCP-governed API calls to query alert history, retrieve service topology, execute runbooks, and create or update ServiceNow tickets autonomously, cutting mean time to acknowledge and freeing L1 engineers from routine triage loops.",
+    ],
+    highlight: "Autonomous alert-to-ticket pipeline with CMDB correlation and runbook execution.",
+    link: "https://github.com/manjunathgujjar",
+  },
+  {
+    index: "05",
+    title: "OSS Contribution Automation Agents",
+    type: "Developer Tooling · Anthropic API",
+    tags: ["Anthropic API", "Python", "GitHub Actions", "Tool Use", "Agentic AI", "Subprocess", "CI/CD"],
+    bullets: [
+      "Built two agentic workers on GitHub Actions cron using the Anthropic Messages API with native tool use: a PR Monitor agent that digests CI/review activity into structured email reports, and an Issue Fixer agent that detects open bugs, writes fixes, runs the test suite, and opens a draft PR autonomously, with zero local infrastructure.",
+      "Implemented a bare-metal agent loop (tool call → subprocess → result feed-back) with no framework overhead; demonstrates the core agentic pattern at its simplest using client.messages.create() with tool definitions and real subprocess execution.",
+    ],
+    highlight: "Two autonomous agents on GitHub Actions: PR monitor + bug fixer.",
+    link: "https://github.com/manjunathgujjar/oss-automation",
+  },
+  {
+    index: "06",
+    title: "AI-Driven Knowledge Graph & GraphRAG Platform",
+    type: "Full-Stack Research Application",
+    tags: ["Neo4j", "GraphRAG", "RAG", "Ollama", "DeepSeek", "Hybrid Retrieval", "Multimodal Embeddings", "Python"],
+    bullets: [
+      "Built an AI platform that ingests documents, images, and recursive links (depth-5), extracting entities and relationships into a Neo4j knowledge graph for structured semantic retrieval.",
+      "Implemented GraphRAG with multimodal embeddings and hybrid retrieval (graph traversal + vector search), enabling citation-traced Q&A; benchmarked graph-augmented retrieval against dense-only baseline, demonstrating measurable accuracy gains on entity-heavy queries.",
+    ],
+    highlight: "GraphRAG vs. dense-only benchmarked: graph augmentation outperforms on entity-heavy queries.",
+    link: "https://github.com/manjunathgujjar",
   },
 ];
 
@@ -63,9 +113,14 @@ export function Projects() {
                     {project.title}
                   </h3>
                 </div>
-                <div className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all duration-300">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 group-hover:bg-white/5 transition-all duration-300"
+                >
                   <ArrowUpRight className="text-primary/40 group-hover:text-primary w-4 h-4 transition-colors duration-300" />
-                </div>
+                </a>
               </div>
 
               {/* Highlight callout */}

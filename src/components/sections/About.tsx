@@ -12,7 +12,7 @@ export function About() {
     offset: ['start 0.9', 'end 0.4']
   });
 
-  const paragraphText = "Over the last 4 years, I have architected cognitive automation platforms at Kochasoft Inc and Protechs Global that drastically improved efficiency. My work spans from autonomous ITSM workflows utilizing Azure AI Foundry to sophisticated enterprise RAG-based systems.";
+  const paragraphText = "I have 5 years of engineering experience, with the last 2 focused entirely on production AI: autonomous cloud-native ITSM agents that cut review time by 70%, hybrid RAG pipelines with sub-10ms cache latency, and LLM evaluation frameworks with CI-gated grounding metrics. I care about the full stack: architecture, evaluation, and the reliability engineering that separates a working demo from a product people depend on.";
   const totalChars = paragraphText.length;
 
   return (
@@ -20,15 +20,15 @@ export function About() {
       <div className="bg-[#101010] p-8 md:p-16 lg:p-24 rounded-3xl text-center max-w-6xl w-full">
         
         <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-8">
-          AI Architecture & Agentic Systems
+          Agentic AI · Production Systems · LLM Evaluation
         </p>
 
-        <WordsPullUpMultiStyle 
+        <WordsPullUpMultiStyle
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-3xl mx-auto leading-[0.95] sm:leading-[0.9] text-[#E1E0CC] mb-16"
           segments={[
-            { text: "I am Mohan Gujjar, ", className: "font-normal" },
-            { text: "an AI Engineer. ", className: "font-normal" },
-            { text: "I specialize in multi-agent orchestration, GraphRAG, and scaleable intelligence.", className: "font-normal" }
+            { text: "I build AI systems that work in production. ", className: "font-normal" },
+            { text: "multi-agent platforms, RAG pipelines, ", className: "font-normal" },
+            { text: "and the evaluation layer that keeps LLMs reliable at scale.", className: "font-normal" }
           ]}
         />
 
