@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { WordsPullUpMultiStyle } from "../ui/WordsPullUpMultiStyle";
@@ -213,7 +214,7 @@ function DiagramGraphRAG() {
   );
 }
 
-const diagrams: Record<string, () => JSX.Element> = {
+const diagrams: Record<string, () => React.ReactElement> = {
   "01": DiagramSentinel,
   "02": DiagramARIA,
   "03": DiagramITSM,
