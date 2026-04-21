@@ -18,7 +18,7 @@ export function WordsPullUpMultiStyle({ segments, className = "" }: WordsPullUpM
   let wordIndex = 0;
 
   return (
-    <div ref={ref} className={`inline-flex flex-wrap justify-center ${className}`}>
+    <div ref={ref} className={`flex flex-wrap justify-start ${className}`}>
       {segments.map((segment, segIdx) => {
         const words = segment.text.split(" ");
         return (
@@ -27,7 +27,7 @@ export function WordsPullUpMultiStyle({ segments, className = "" }: WordsPullUpM
               const currentDelay = wordIndex * 0.08;
               wordIndex++;
               return (
-                <span key={wIdx} className="inline-block overflow-hidden relative mx-[0.15em] my-[0.1em] pb-[0.18em]">
+                <span key={wIdx} className={`inline-block overflow-hidden relative ${wIdx === 0 ? 'ml-0 mr-[0.3em]' : 'mx-[0.15em]'} my-[0.1em] pb-[0.18em]`}>
                   <motion.span
                     initial={{ y: "150%" }}
                     animate={isInView ? { y: 0 } : { y: "150%" }}

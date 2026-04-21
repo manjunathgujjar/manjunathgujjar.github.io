@@ -38,12 +38,6 @@ const certifications = [
   { name: "Claude Code in Action", issuer: "Anthropic", link: "https://verify.skilljar.com/c/vbvkfeqdahfg" },
 ];
 
-const achievements = [
-  { stat: "7th / 500+", title: "Smart India Hackathon", detail: "teams · alumni tracking platform" },
-  { stat: "Top 10", title: "CTF at UMBC", detail: "university-wide Capture the Flag" },
-  { stat: "1,432 / 200K+", title: "Cognizant Coding Contest", detail: "global participants" },
-];
-
 export function Education() {
   return (
     <section className="bg-[#0a0a0a] py-24 px-4 sm:px-6 rounded-t-[3rem]">
@@ -123,26 +117,6 @@ export function Education() {
             </div>
           </motion.div>
         </div>
-
-        {/* Achievements strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-[#151515] p-8 rounded-2xl border border-white/5"
-        >
-          <h4 className="text-[#E1E0CC] font-medium mb-6 text-lg">Achievements</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {achievements.map((ach, idx) => (
-              <div key={idx}>
-                <p className="text-[#E1E0CC] text-3xl font-medium tracking-tight leading-none mb-1">{ach.stat}</p>
-                <p className="text-[#E1E0CC] text-sm font-medium mt-2 mb-0.5">{ach.title}</p>
-                <p className="text-primary/45 text-xs leading-relaxed">{ach.detail}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
 
       </div>
     </section>
