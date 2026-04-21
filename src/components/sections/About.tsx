@@ -12,7 +12,7 @@ export function About() {
     offset: ['start 0.9', 'end 0.4']
   });
 
-  const paragraphText = "I have 5 years of engineering experience, with the last 2 focused entirely on production AI: autonomous cloud-native ITSM agents that cut review time by 70%, hybrid RAG pipelines with sub-10ms cache latency, and LLM evaluation frameworks with CI-gated grounding metrics. I care about the full stack: architecture, evaluation, and the reliability engineering that separates a working demo from a product people depend on.";
+  const paragraphText = "I have 4 years of engineering experience, with the last 2 focused entirely on production AI: autonomous cloud-native ITSM agents that cut review time by 70%, hybrid RAG pipelines with sub-10ms cache latency, and LLM evaluation frameworks with CI-gated grounding metrics. I care about the full stack: architecture, evaluation, and the reliability engineering that separates a working demo from a product people depend on.";
   const totalChars = paragraphText.length;
 
   return (
