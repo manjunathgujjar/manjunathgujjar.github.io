@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import type { Easing } from "framer-motion";
-import { WordsPullUpMultiStyle } from "../ui/WordsPullUpMultiStyle";
 
 const easeCustom: Easing = [0.22, 1, 0.36, 1] as Easing;
 
@@ -110,73 +109,79 @@ const impacts = [
 
 export function Features() {
   return (
-    <section id="skills" className="bg-black relative py-20 px-4 sm:px-6">
+    <section id="skills" className="bg-black relative py-20 px-4 sm:px-10 md:px-14">
       <div className="bg-noise absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none z-0" />
 
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Heading */}
-        <div className="mb-10">
-          <WordsPullUpMultiStyle
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-left justify-start"
-            segments={[
-              { text: "The full AI engineering stack. ", className: "text-[#E1E0CC] font-normal block mb-2" },
-              { text: "From agent design to production reliability.", className: "text-gray-500 font-normal block" },
-            ]}
-          />
-        </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-20">
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-3"
-        >
-          {/* Impact card — tall left column */}
-          <motion.div
-            variants={cardVariants}
-            className="md:row-span-3 bg-[#0f0f0f] border border-white/5 rounded-2xl p-7 flex flex-col"
-          >
-            <p className="text-primary/50 text-[10px] tracking-widest uppercase mb-6">
-              Impact at a glance
+          {/* Heading col */}
+          <div className="md:col-span-1 pt-2">
+            <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#8a8477] mb-5">
+              § 03 <span className="text-amber-500 mx-1.5">·</span> Stack
             </p>
-            <div className="flex flex-col gap-0 flex-1 justify-around">
-              {impacts.map(({ stat, label }) => (
-                <div key={stat} className="border-b border-white/5 py-5 first:pt-0 last:border-none last:pb-0">
-                  <p className="text-[#E1E0CC] text-5xl font-medium tracking-tight leading-none mb-1">
-                    {stat}
-                  </p>
-                  <p className="text-primary/45 text-xs leading-snug">{label}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+            <h2 className="font-fraunces font-light text-[#ede6d3] leading-[1.1] tracking-tight" style={{ fontSize: "clamp(28px,2.8vw,48px)" }}>
+              The full AI engineering <em className="italic text-amber-500">stack</em>.
+            </h2>
+          </div>
 
-          {/* 4 skill cards — 2×2 in cols 2–3 */}
-          {skillGroups.map((group) => (
+          {/* Skills grid col */}
+          <div className="md:col-span-3">
             <motion.div
-              key={group.label}
-              variants={cardVariants}
-              className="bg-[#1a1a1a] rounded-2xl p-6 flex flex-col"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-3"
             >
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="text-[#E1E0CC] font-medium text-sm">{group.label}</h3>
-                <span className="text-gray-600 text-xs shrink-0 ml-2">({group.number})</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-white/5 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+              {/* Impact card — tall left column */}
+              <motion.div
+                variants={cardVariants}
+                className="md:row-span-3 bg-[#0f0f0f] border border-white/5 rounded-2xl p-7 flex flex-col"
+              >
+                <p className="text-primary/50 text-[10px] tracking-widest uppercase mb-6">
+                  Impact at a glance
+                </p>
+                <div className="flex flex-col gap-0 flex-1 justify-around">
+                  {impacts.map(({ stat, label }) => (
+                    <div key={stat} className="border-b border-white/5 py-5 first:pt-0 last:border-none last:pb-0">
+                      <p className="text-amber-500 text-5xl font-medium tracking-tight leading-none mb-1">
+                        {stat}
+                      </p>
+                      <p className="text-primary/45 text-xs leading-snug">{label}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
 
-        </motion.div>
+              {/* 6 skill cards */}
+              {skillGroups.map((group) => (
+                <motion.div
+                  key={group.label}
+                  variants={cardVariants}
+                  className="bg-[#1a1a1a] rounded-2xl p-6 flex flex-col"
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <h3 className="text-[#E1E0CC] font-medium text-sm">{group.label}</h3>
+                    <span className="text-gray-600 text-xs shrink-0 ml-2">({group.number})</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((skill) => (
+                      <span
+                        key={skill}
+                        className="bg-white/5 border border-white/8 text-gray-300 text-xs px-3 py-1.5 rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+
+            </motion.div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

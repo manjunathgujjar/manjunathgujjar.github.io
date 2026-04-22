@@ -1,4 +1,13 @@
+import React from "react";
 import { motion } from "framer-motion";
+
+function hl(text: string): React.ReactNode {
+  return text.split(/(\d[\d,]*[%+]|\bsub-\d+ms\b)/g).map((part, i) =>
+    /^(\d[\d,]*[%+]|sub-\d+ms)$/.test(part)
+      ? <span key={i} className="text-amber-500 font-medium">{part}</span>
+      : part
+  );
+}
 
 const experiences = [
   {
@@ -57,45 +66,58 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="bg-black py-20 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-[#E1E0CC] text-3xl sm:text-5xl font-medium mb-16 tracking-tight">
-          Professional Timeline
-        </h2>
+    <section id="experience" className="bg-black py-20 px-4 sm:px-10 md:px-14">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-20">
 
-        <div className="flex flex-col gap-10">
-          {experiences.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.08 }}
-              className="flex flex-col md:flex-row gap-4 md:gap-12 group"
-            >
-              <div className="md:w-1/4 shrink-0 pt-1">
-                <span className="text-primary/60 text-sm font-medium tracking-wide">
-                  {exp.dates}
-                </span>
-              </div>
-              <div className="md:w-3/4 flex flex-col gap-3 pb-10 border-b border-white/5 group-last:border-none">
-                <h3 className="text-[#E1E0CC] text-xl md:text-2xl font-medium">
-                  {exp.company}
-                </h3>
-                <span className="text-primary/80 font-serif italic text-lg">
-                  {exp.role}
-                </span>
-                <ul className="mt-1 space-y-2">
-                  {exp.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex gap-3 text-primary/60 text-sm md:text-base leading-relaxed">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-primary/40 shrink-0" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+          {/* Heading col */}
+          <div className="md:col-span-1 pt-2">
+            <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#8a8477] mb-5">
+              § 02 <span className="text-amber-500 mx-1.5">·</span> Experience
+            </p>
+            <h2 className="font-fraunces font-light text-[#ede6d3] leading-[1.1] tracking-tight" style={{ fontSize: "clamp(28px,2.8vw,48px)" }}>
+              4 years of <em className="italic text-amber-500">shipping</em>.
+            </h2>
+          </div>
+
+          {/* Timeline col */}
+          <div className="md:col-span-3">
+            <div className="flex flex-col gap-10">
+              {experiences.map((exp, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: idx * 0.08 }}
+                  className="flex flex-col md:flex-row gap-4 md:gap-12 group"
+                >
+                  <div className="md:w-1/4 shrink-0 pt-1">
+                    <span className="text-primary/60 text-sm font-medium tracking-wide">
+                      {exp.dates}
+                    </span>
+                  </div>
+                  <div className="md:w-3/4 flex flex-col gap-3 pb-10 border-b border-white/5 group-last:border-none">
+                    <h3 className="text-[#E1E0CC] text-xl md:text-2xl font-medium">
+                      {exp.company}
+                    </h3>
+                    <span className="text-primary/80 font-serif italic text-lg">
+                      {exp.role}
+                    </span>
+                    <ul className="mt-1 space-y-2">
+                      {exp.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex gap-3 text-primary/60 text-sm md:text-base leading-relaxed">
+                          <span className="mt-1.5 w-1 h-1 rounded-full bg-primary/40 shrink-0" />
+                          <span>{hl(bullet)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
