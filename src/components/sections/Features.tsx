@@ -71,6 +71,34 @@ const skillGroups = [
       "OAuth2 · JWT · RBAC",
     ],
   },
+  {
+    label: "Languages & Engineering",
+    number: "05",
+    items: [
+      "Python",
+      "TypeScript / JavaScript",
+      "Node.js / React",
+      "SQL · Bash · Git",
+      "REST / GraphQL",
+      "FastAPI / Express",
+      "Kafka / Event-Driven",
+      "Subprocess · CLI tooling",
+    ],
+  },
+  {
+    label: "Security & Compliance",
+    number: "06",
+    items: [
+      "OWASP LLM Top 10",
+      "Red-team / Blue-team",
+      "Prompt Injection Defense",
+      "Adversarial Input Testing",
+      "Output Guardrails",
+      "Audit Trails",
+      "Responsible AI",
+      "Human-in-the-Loop Gates",
+    ],
+  },
 ];
 
 const impacts = [
@@ -107,7 +135,7 @@ export function Features() {
           {/* Impact card — tall left column */}
           <motion.div
             variants={cardVariants}
-            className="md:row-span-2 bg-[#0f0f0f] border border-white/5 rounded-2xl p-7 flex flex-col"
+            className="md:row-span-3 bg-[#0f0f0f] border border-white/5 rounded-2xl p-7 flex flex-col"
           >
             <p className="text-primary/50 text-[10px] tracking-widest uppercase mb-6">
               Impact at a glance

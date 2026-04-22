@@ -6,7 +6,7 @@ const experiences = [
     company: "Kochasoft Inc",
     role: "AI Engineer",
     bullets: [
-      "Architected a cloud-native multi-agent orchestration platform on Azure AI Foundry, deployed on-premises, using a planner/supervisor topology with MCP-governed tool calls into enterprise systems (CMDB, ticketing, monitoring) enforcing OAuth2, RBAC, and full audit trails.",
+      "Architected a cloud-native multi-agent orchestration platform on Azure AI Foundry, deployed on-premises, using a hierarchical supervisor architecture with MCP-governed tool calls into enterprise systems (CMDB, ticketing, monitoring) enforcing OAuth2, RBAC, and full audit trails.",
       "Designed human-in-the-loop workflows with confidence-based routing and tiered approval gates; built RAG-grounded decision pipelines with Redis semantic caching to improve accuracy and reduce latency across production agent workflows.",
       "Owned the full observability stack: Langfuse per-agent traces, Prometheus/Grafana metrics, Ragas CI evaluation gate, Redis HITL state, Qdrant Cloud vectors, and PostgreSQL eval history — with SxS testing and drift detection across all agents.",
       "Applied responsible AI throughout: red-team coverage for adversarial inputs, output guardrails at the agent boundary, and operator override controls on every automated decision.",

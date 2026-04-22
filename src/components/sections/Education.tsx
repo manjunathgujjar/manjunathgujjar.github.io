@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 const education = [
   {
     type: "Master's Degree",
-    school: "UMBC",
+    school: "University of Maryland, Baltimore County",
     degree: "MS in Computer Science (STEM)",
     gpa: "GPA 3.4",
     desc: "Data Structures & Algorithms, Machine Learning, Cybersecurity, Active Cyber Defense.",
   },
   {
     type: "Bachelor's Degree",
-    school: "Jawaharlal Nehru Technological University",
+    school: "Jawaharlal Nehru Institute of Technology",
     degree: "BS in Computer Science",
     gpa: "GPA 3.7",
     desc: "Core fundamentals of operating systems, databases, algorithms, and software engineering.",

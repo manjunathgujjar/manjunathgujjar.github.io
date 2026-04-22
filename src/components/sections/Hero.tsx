@@ -46,7 +46,7 @@ export function Hero() {
                 transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-white font-medium text-xs sm:text-sm md:text-base leading-[1.2] max-w-sm text-left md:text-right mb-6"
               >
-                AI Engineer with 4 years of engineering experience and 2+ years in production agentic systems: multi-agent orchestration, RAG pipelines, and LLM evaluation at enterprise scale.
+                AI Engineer with 4 years of engineering experience and 2+ years in production agentic systems. Multi-agent orchestration, RAG pipelines, and LLM evaluation at enterprise scale.
               </motion.p>
               
               <motion.a
