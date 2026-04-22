@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const education = [
   {
     type: "Master's Degree",
-    school: "University of Maryland, Baltimore County",
+    school: "University of Maryland",
     degree: "MS in Computer Science (STEM)",
     gpa: "GPA 3.4",
     desc: "Data Structures & Algorithms, Machine Learning, Cybersecurity, Active Cyber Defense.",
