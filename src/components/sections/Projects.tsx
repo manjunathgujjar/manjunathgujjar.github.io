@@ -383,24 +383,18 @@ export function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: 0.05 }}
-                className="group border-t border-white/[0.07] py-10 md:py-14 last:border-b last:border-white/[0.07]"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: isReverse ? "1fr 1.2fr" : "1.2fr 1fr",
-                  gap: "40px",
-                  alignItems: "stretch",
-                }}
+                className={`group grid grid-cols-1 gap-8 border-t border-white/[0.07] py-10 md:py-14 last:border-b last:border-white/[0.07] items-stretch ${isReverse ? "md:[grid-template-columns:1fr_1.2fr]" : "md:[grid-template-columns:1.2fr_1fr]"}`}
               >
-                {/* Diagram panel */}
+                {/* Diagram panel — always on top on mobile */}
                 <div
-                  className={`${isReverse ? "order-2" : "order-1"} bg-[#0f0f0f] border border-white/[0.07] rounded overflow-hidden flex items-center justify-center p-6 md:p-8`}
-                  style={{ minHeight: "320px" }}
+                  className={`order-1 ${isReverse ? "md:order-2" : "md:order-1"} bg-[#0f0f0f] border border-white/[0.07] rounded overflow-hidden flex items-center justify-center p-6 md:p-8`}
+                  style={{ minHeight: "280px" }}
                 >
                   <Diagram />
                 </div>
 
                 {/* Content panel */}
-                <div className={`${isReverse ? "order-1" : "order-2"} flex flex-col gap-[18px] py-3`}>
+                <div className={`order-2 ${isReverse ? "md:order-1" : "md:order-2"} flex flex-col gap-[18px] py-3`}>
                   <div className="flex justify-between items-start">
                     <span className="font-mono text-[11px] text-[#8a8477] tracking-[0.1em] uppercase">
                       {project.index} · {project.label}

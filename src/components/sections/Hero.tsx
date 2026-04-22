@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { WordsPullUp } from "../ui/WordsPullUp";
 
-const marqueeItems = ["Agentic AI", "Multi-Agent Orchestration", "Production RAG", "LLM Evaluation", "Observability"];
-
 export function Hero() {
   return (
     <section className="h-screen w-full relative p-4 md:p-6 bg-black">
@@ -33,14 +31,6 @@ export function Hero() {
                 className="text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] xl:text-[11vw] 2xl:text-[11vw] font-medium leading-[0.85] tracking-[-0.05em]"
                 style={{ color: "#E1E0CC" }}
               />
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                className="font-mono text-sm tracking-[0.14em] uppercase text-[#E1E0CC] mt-4"
-              >
-                AI Engineer
-              </motion.p>
             </div>
 
             {/* Right: Bio + CTA */}
@@ -71,24 +61,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Keyword marquee strip */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="border-t border-white/[0.08] pt-4 flex items-center justify-between"
-          >
-            {marqueeItems.map((item, i) => (
-              <div key={item} className="flex items-center gap-3 sm:gap-5 md:gap-8">
-                <span className="font-mono text-xs sm:text-sm tracking-[0.12em] uppercase text-[#E1E0CC] font-medium">
-                  {item}
-                </span>
-                {i < marqueeItems.length - 1 && (
-                  <span className="text-white/40 text-base">/</span>
-                )}
-              </div>
-            ))}
-          </motion.div>
         </div>
       </div>
     </section>
